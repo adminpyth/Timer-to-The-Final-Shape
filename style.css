@@ -9,6 +9,85 @@ body {
     overflow: hidden;
 }
 
+.index-nav ul {
+    margin-top: 132px;
+}
+
+.index-nav ul li {
+    display: inline; /* Размещаем элементы списка в одну строку */
+    margin-right: 20px;
+}
+
+.index-nav ul li:last-child {
+    margin-right: 0;
+}
+
+.index-nav ul li a {
+    font-size: 36px; /* Увеличиваем размер шрифта кнопок */
+    color:black; /* Желтый цвет текста кнопок */
+}
+
+.index-nav ul li a {
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+.lore-nav ul {
+    margin-top: 810px; /* Перемещаем кнопки вниз на странице с лором */
+}
+
+.lore-nav ul li {
+    display: inline; /* Размещаем элементы списка в одну строку */
+    margin-right: 20px;
+}
+
+.lore-nav ul li:last-child {
+    margin-right: 0;
+}
+
+.lore-nav ul li a {
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+.lore-nav ul li a {
+    font-size: 36px; /* Увеличиваем размер шрифта кнопок */
+    color: black; /* Желтый цвет текста кнопок */
+}
+
+.index-nav ul li a,
+.lore-nav ul li a {
+    transition: color 0.3s ease; /* Плавное изменение цвета текста при переходе */
+}
+
+.index-nav ul li a:hover,
+.lore-nav ul li a:hover {
+    color: yellow; /* Изменяем цвет текста при наведении */
+}
+.animation-container {
+    position: relative;
+    width: 40%;
+    height: 600px;
+    margin-top: -700px; /* Отступ сверху для контейнера анимации */
+    overflow: hidden;
+}
+
+.animated-image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0; /* Начальная непрозрачность */
+    animation: fadeIn 2s forwards; /* Анимация появления */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .countdown {
     font-size: 80px;
     margin-top: 50vh;
