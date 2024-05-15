@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Final Shape</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+            font-family: 'Intro';
+            src: url('Intro.otf') format('opentype');
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title">До выхода Финальной Формы осталось:</div>
+        <div class="countdown" id="countdown"></div>
+    </header>
+    <footer>
+        <div class="countdown" id="countdown_footer"></div>
+    </footer>
+
+    <script>
+        const targetDate = new Date('June 4, 2024 20:00:00 GMT+0300');
+
+        function updateCountdown() {
+            const currentDate = new Date();
+            const timeDifference = targetDate - currentDate;
+
+            if (timeDifference <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById('countdown').textContent = 'Финальная Форма вышла, готовьтесь ждать в очереди 20 лет :))';
+                document.getElementById('countdown_footer').textContent = 'Финальная Форма вышла, готовьтесь ждать в очереди 20 лет :))';
+                return;
+            }
+
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').textContent = `${days} дней, ${hours} часов, ${minutes} минут, ${seconds} секунд`;
+        }
+
+        updateCountdown();
+        const timerInterval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

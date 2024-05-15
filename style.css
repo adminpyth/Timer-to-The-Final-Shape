@@ -1,0 +1,20 @@
+body {
+    background-image: url('FDG.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Intro', sans-serif;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.countdown {
+    font-size: 80px;
+    margin-top: 50vh;
+}
+
+.title {
+    font-size: 56px;
+    margin-bottom: 70px;
+}
