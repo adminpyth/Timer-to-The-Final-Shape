@@ -3,50 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lore - The Final Shape</title>
+    <title>The Final Shape</title>
     <link rel="stylesheet" href="style.css">
     <style>
         @font-face {
             font-family: 'Intro';
             src: url('Intro.otf') format('opentype');
         }
-        .lore-text {
-            text-align: left; /* Выравнивание текста по левому краю */
-            margin: -600px auto 0; /* Центрирование текста по горизонтали и поднятие вверх */
-            max-width: 800px; /* Максимальная ширина текста */
-            font-family: 'Intro', sans-serif; /* Используем шрифт Intro */
-            color: black; /* Цвет текста */
-            padding: 0 20px; /* Добавляем отступы слева и справа */
-            margin-right: 200px; /* Сдвигаем текст вправо на 20px */
-            font-size: 24px;
-        }
     </style>
 </head>
 <body>
     <header>
-        <nav class="lore-nav">
+        <div class="title">До выхода Финальной Формы осталось:(тимохе привет)</div>
+        <div class="countdown" id="countdown"></div>
+    </header>
+
+<nav class="index-nav">
             <ul>
                 <li><a href="index.html">Таймер</a></li>
                 <li><a href="lore.html">Лор</a></li>
             </ul>
         </nav>
-        <div class="animation-container">
-            <img src='img/oryx.jpg' alt="Красивая картинка" class="animated-image">
-        </div>
-        <div class="lore-text">
-            <p>
-                Орикс, Одержимый король (ориг. Oryx, the Taken King), рожденный под именем Аураш (ориг. Aurash) и ранее известный как Аурикс (ориг. Auryx) (что означает "Долгая мысль") — является властелином Осмиевого трона, богом-королем Улья и повелителем Одержимых. ЕГО ЗАЕБАШИЛИ СТРАЖИ STASSOLO2802, PURPLESTRAZHMISTERWOLFMEGA И timofeysolo2802
-            </p>
-            <p>
-                Возрожденный из самой Тьмы посредством договора с червебогами. Орикс, вместе со своими сестрами Саватун, Королевой-ведьмой и Зиву Арат, Богиней войны, стали основателями новой расы Улья и источником их ужасной силы. Из всех богов Улья, только Орикс обладает властью подчинять другие расы своей воле, создавая одержимых. Орикс также является отцом Кроты, смертоносного принца Улья, который убил тысячи Стражей во время Великой катастрофы; и Нокриса, отчужденного первенца, а после - глашатая червебога Зола, Повелителя тысяч армий.
-            </p>
-        </div>
-    </header>
     <footer>
-        <!-- здесь можете добавить содержимое футера, если необходимо -->
+        <div class="countdown" id="countdown_footer"></div>
     </footer>
+
     <script>
-        // Ваш JavaScript может быть добавлен сюда, если это необходимо
+        const targetDate = new Date('June 4, 2024 20:00:00 GMT+0300');
+
+        function updateCountdown() {
+            const currentDate = new Date();
+            const timeDifference = targetDate - currentDate;
+
+            if (timeDifference <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById('countdown').textContent = 'Финальная Форма вышла, готовьтесь ждать в очереди 20 лет :))';
+                document.getElementById('countdown_footer').textContent = 'Финальная Форма вышла, готовьтесь ждать в очереди 20 лет :))';
+                return;
+            }
+
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').textContent = `${days} дней, ${hours} часов, ${minutes} минут, ${seconds} секунд`;
+        }
+
+        updateCountdown();
+        const timerInterval = setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
