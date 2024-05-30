@@ -88,6 +88,20 @@ body {
     }
 }
 
+@font-face {
+    font-family: 'Intro';
+    src: url('C:\Users\koltu\OneDrive\Рабочий стол\секрет\Intro.otf.otf') format('otf'), /* Формат WOFF2 */
+
+    font-weight: normal; /* Вес шрифта (нормальный, жирный и т. д.) */
+    font-style: normal; /* Стиль шрифта (нормальный, курсив и т. д.) */
+}
+
+/* Пример использования шрифта для элементов */
+body {
+    font-family: 'Intro', sans-serif;
+}
+
+
 .countdown {
     font-size: 80px;
     margin-top: 50vh;
