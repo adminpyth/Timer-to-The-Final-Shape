@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>серверы-off</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="title">Серверы отключат через:</div>
+        <div class="countdown" id="timer"></div>
+    </header>
+
+    <nav class="index-nav">
+        <ul>
+            <li><a href="index.html">Таймер</a></li>
+            <li><a href="lore.html">Лор</a></li>
+            <li><a href="servers_off.html">Серверы-off</a></li> <!-- Добавленная вкладка -->
+        </ul>
+    </nav>
+
+    <script>
+        // Функция для отображения таймера
+        const countdown = () => {
+            // Устанавливаем дату окончания таймера (3 июня 2024 года в 19:00 по МСК)
+            const endDate = new Date("June 3, 2024 19:00:00 GMT+0300").getTime();
+
+            // Обновляем таймер
+            const updateTimer = () => {
+                // Получаем текущую дату и время
+                const now = new Date().getTime();
+
+                // Вычисляем оставшееся время до окончания таймера
+                const distance = endDate - now;
+
+                // Расчет дней, часов, минут и секунд
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Определение правильного падежа для слов "день", "час", "минута", "секунда"
+                const daysWord = days === 1 ? "день" : days > 1 && days < 5 ? "дня" : "дней";
+                const hoursWord = (hours >= 5 && hours <= 20) || (hours === 0) ? "часов" : (hours === 1 || hours === 21) ? "час" : (hours >= 2 && hours <= 4) || (hours >= 22 && hours <= 24) ? "часа" : "часов";
+                const minutesWord = (minutes === 1 || minutes === 21 || minutes === 31 || minutes === 41 || minutes === 51) ? "минута" : (minutes >= 2 && minutes <= 4) || (minutes >= 22 && minutes <= 24) || (minutes >= 32 && minutes <= 34) || (minutes >= 42 && minutes <= 44) || (minutes >= 52 && minutes <= 54) ? "минуты" : "минут";
+
+                const secondsWord = (seconds === 1 || seconds === 21 || seconds === 31 || seconds === 41 || seconds === 51) ? "секунда" : (seconds >= 2 && seconds <= 4) || (seconds >= 22 && seconds <= 24) || (seconds >= 32 && seconds <= 34) || (seconds >= 42 && seconds <= 44) || (seconds >= 52 && seconds <= 54) ? "секунды" : "секунд";
+
+                // Выводим результат в элемент с id "timer"
+                document.getElementById("timer").innerHTML = days + " " + daysWord + " "
+                + hours + " " + hoursWord + " " + minutes + " " + minutesWord + " " + seconds + " " + secondsWord;
+
+                // Если время истекло, выводим сообщение и останавливаем таймер
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("timer").innerHTML = "Серверы легли :) ";
+                }
+            };
+
+            // Обновляем таймер каждую секунду
+            const timer = setInterval(updateTimer, 1000);
+            updateTimer(); // Вызываем функцию сразу, чтобы таймер не показывал 00:00:00 на старте
+        }
+
+        // Вызываем функцию таймера при загрузке страницы
+        window.onload = () => {
+            countdown();
+        };
+    </script>
+</body>
+</html>
