@@ -14,21 +14,65 @@
 </head>
 <body>
     <header>
-        <div class="title">До выхода Финальной Формы осталось:(тимохе привет)</div>
+        <div class="title">До выхода Финальной Формы осталось:</div>
         <div class="countdown" id="countdown"></div>
     </header>
 
-<nav class="index-nav">
-            <ul>
-                <li><a href="index.html">Таймер</a></li>
-                <li><a href="lore.html">Лор</a></li>
-            </ul>
-        </nav>
+    <nav class="index-nav">
+        <ul>
+            <li><a href="index.html">Таймер</a></li>
+            <li><a href="lore.html">Лор</a></li>
+            <li><a href="servers_off.html">Серверы-off</a></li> <!-- Добавленная вкладка -->
+        </ul>
+    </nav>
+
     <footer>
         <div class="countdown" id="countdown_footer"></div>
     </footer>
 
     <script>
+        function getSecondsWord(seconds) {
+            if (seconds === 1 || (seconds > 20 && seconds % 10 === 1)) {
+                return "секунда";
+            } else if ((seconds >= 2 && seconds <= 4) || (seconds > 20 && seconds % 10 >= 2 && seconds % 10 <= 4)) {
+                return "секунды";
+            } else {
+                return "секунд";
+            }
+        }
+
+        function getMinutesWord(minutes) {
+            if (minutes === 1 || (minutes > 20 && minutes % 10 === 1)) {
+                return "минута";
+            } else if ((minutes >= 2 && minutes <= 4) || (minutes > 20 && minutes % 10 >= 2 && minutes % 10 <= 4)) {
+                return "минуты";
+            } else {
+                return "минут";
+            }
+        }
+
+        function getHoursWord(hours) {
+            if ((hours >= 5 && hours <= 20) || hours % 10 === 0) {
+                return "часов";
+            } else if (hours === 1 || hours === 21) {
+                return "час";
+            } else if ((hours >= 2 && hours <= 4) || (hours >= 22 && hours <= 24)) {
+                return "часа";
+            }
+        }
+
+        function getDaysWord(days) {
+            if (days === 0) {
+                return "дней";
+            } else if (days === 1) {
+                return "день";
+            } else if (days >= 2 && days <= 4) {
+                return "дня";
+            } else {
+                return "дней";
+            }
+        }
+
         const targetDate = new Date('June 4, 2024 20:00:00 GMT+0300');
 
         function updateCountdown() {
@@ -47,7 +91,12 @@
             const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-            document.getElementById('countdown').textContent = `${days} дней, ${hours} часов, ${minutes} минут, ${seconds} секунд`;
+            const secondsWord = getSecondsWord(seconds);
+            const minutesWord = getMinutesWord(minutes);
+            const hoursWord = getHoursWord(hours);
+            const daysWord = getDaysWord(days);
+            
+            document.getElementById('countdown').textContent = `${days} ${daysWord}, ${hours} ${hoursWord}, ${minutes} ${minutesWord}, ${seconds} ${secondsWord}`;
         }
 
         updateCountdown();
